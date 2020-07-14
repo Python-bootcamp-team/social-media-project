@@ -1,5 +1,5 @@
 # Social media project
 ### Team members:
-#### Thomas
-#### Alan lolololololol
+#### Thomas is stinky
+#### Alan
 #### Zhca
