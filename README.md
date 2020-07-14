@@ -1,5 +1,5 @@
 # Social media project
 ### Team members:
 #### Thomas
-#### Alna
+#### Alan
 #### Zhca
