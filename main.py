@@ -1,13 +1,11 @@
-def get_valid_input():
-    choice = 0
+def get_valid_input(msg):
     valid = False
     while not valid:
         try:
-            choice = int(input(">> "))
-            valid = True
+            choice = int(input(msg))
+            return choice
         except ValueError:
             print("Invalid input")
-    return choice
 
 
 def border():
@@ -34,7 +32,7 @@ def login():
             if user == users[counter][:-1]:
                 if password == users[counter + 1][:-1]:
                     valid_login = True
-                    print("logged in\n")
+                    print("logged in")
             counter += 1
         if not valid_login:
             print("Invalid login\n")
@@ -49,57 +47,69 @@ def menu(user):
     print("[3] Logout")
 
 
-def create_post(user, post_count):
+def create_post(user, post_count, posts):
     border()
     print("Type your post below\n")
     post = input(">> ")
-    with open("data.txt", "a") as posts:
-        posts.write("\n#" + str(post_count + 1) + ": " + user + "\n\t" + post)
+    posts.append("#" + str(post_count + 1) + ": " + user + "\n\t" + post + "\n")
 
 
 def view_posts(user, posts):
-    with open("data.txt", "a") as data:
-        for i in posts:
-            data.write(i)
-    with open("data.txt", "r") as data:
-        print(data.read())
-    print("[1] Comment on a post")
-    print("[2] Delete one of your posts")
-    print("[3] Back")
-    choice = get_valid_input()
+    border()
+    for i in posts:
+        print(i)
+    print("[1] Back")
+    choice = get_valid_input(">> ")
+    '''
     if choice == 1:
-        '''
-        temp_string = ""
-        post_num = get_valid_input()
-        for i in posts:
-            if post_num in i[1]:
-                temp_string = i
-        '''
+        post_num = get_valid_input("Enter post number: ")
+        print(posts[post_num - 1])
+        print("Type your comment below\n")
+        comment = input(">> ")
+        posts[post_num - 1] += "\n\tcomments:\n\t\t" + user + ": " + comment + "\n"
     elif choice == 2:
         pass
+    '''
 
 
 def finalize(posts):
-    posts.remove(posts[len(posts) - 1])
     with open("data.txt", "a") as data:
         for i in posts:
             data.write(i)
+
+
+def get_correct_posts(temp_posts):
+    new_posts = []
+    slash_counter = 0
+    temp_string = ""
+    for i in temp_posts:
+        for j in i:
+            temp_string += j
+            if j == "\n" or j == "\t":
+                slash_counter += 1
+            if slash_counter == 3:
+                new_posts.append(temp_string)
+                temp_string = ""
+                slash_counter = 0
+    return new_posts
 
 
 def main():
     user = login()
     done = False
     posts = []
-    post_count = 0
+    temp_posts = []
+    with open("data.txt", "r") as data:
+        temp_posts.append(data.read())
+        post_count = len(posts)
+    with open("data.txt", "w"):
+        pass
+    posts = get_correct_posts(temp_posts)
     while not done:
-        with open("data.txt", "r") as data:
-            posts.append(data.read())
-        with open("data.txt", "w") as data:
-            pass
         menu(user)
-        choice = get_valid_input()
+        choice = get_valid_input(">> ")
         if choice == 1:
-            create_post(user, post_count)
+            create_post(user, post_count, posts)
             post_count += 1
         elif choice == 2:
             view_posts(user, posts)
@@ -109,3 +119,9 @@ def main():
 
 
 main()
+'''
+Need to write one time only!
+
+read from the file in the beginning just to fill the list.
+when the user is done making changes, locally, then write to the file.
+'''
