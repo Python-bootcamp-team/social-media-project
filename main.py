@@ -93,7 +93,7 @@ def get_correct_posts(temp_posts):
                 slash_counter = 0
     return new_posts
 
-
+print("this is the main function")
 def main():
     user = login()
     done = False
