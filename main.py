@@ -58,7 +58,7 @@ def view_posts(user, posts):
     border()
     for i in posts:
         print(i, end="")
-    print("[1] Comment")
+    print("\n[1] Comment")
     print("[2] Delete post")
     print("[3] Back")
     choice = get_valid_input(">> ")
@@ -97,14 +97,13 @@ def get_correct_posts(temp_posts):
 def main():
     user = login()
     done = False
-    posts = []
     temp_posts = []
     with open("data.txt", "r") as data:
         temp_posts.append(data.read())
-        post_count = len(posts)
     with open("data.txt", "w"):
         pass
     posts = get_correct_posts(temp_posts)
+    post_count = len(posts)
     while not done:
         menu(user)
         choice = get_valid_input(">> ")
@@ -115,7 +114,6 @@ def main():
             view_posts(user, posts)
         elif choice == 3:
             done = True
-    print(posts)
     finalize(posts)
 
 
