@@ -57,10 +57,11 @@ def create_post(user, post_count, posts):
 def view_posts(user, posts):
     border()
     for i in posts:
-        print(i)
-    print("[1] Back")
+        print(i, end="")
+    print("[1] Comment")
+    print("[2] Delete post")
+    print("[3] Back")
     choice = get_valid_input(">> ")
-    '''
     if choice == 1:
         post_num = get_valid_input("Enter post number: ")
         print(posts[post_num - 1])
@@ -69,7 +70,6 @@ def view_posts(user, posts):
         posts[post_num - 1] += "\n\tcomments:\n\t\t" + user + ": " + comment + "\n"
     elif choice == 2:
         pass
-    '''
 
 
 def finalize(posts):
@@ -115,6 +115,7 @@ def main():
             view_posts(user, posts)
         elif choice == 3:
             done = True
+    print(posts)
     finalize(posts)
 
 
