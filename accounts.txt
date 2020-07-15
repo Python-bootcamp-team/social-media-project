@@ -1,3 +1,5 @@
-username    password
-tom         toms_pwd
-alan        password
+tom
+password
+
+alan
+password
