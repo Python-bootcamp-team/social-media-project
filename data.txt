@@ -1,5 +1,0 @@
-#1: tom
-	qwe
-
-	comments:
-		tom: lmao
