@@ -7,4 +7,9 @@ zach:
 	Bark definitely did all the work
 
 	comments:
+		alan: That's why this program smells so bad
+~alan:
+	Bout to clap Bark with the frying pan
+
+	comments:
 ~
