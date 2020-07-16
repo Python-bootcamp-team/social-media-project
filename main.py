@@ -74,7 +74,7 @@ def menu(user):
 
 
 '''
-Name, type: create_post(user, posts)
+Name, type: create_post(user, posts), void.
 Calls: none.
 Called by: main().
 
@@ -96,7 +96,7 @@ def create_post(user, posts):
 
 
 '''
-Name, type: view_posts(user, posts)
+Name, type: view_posts(user, posts), void.
 Calls: none.
 Called by: main().
 
@@ -140,14 +140,12 @@ def view_posts(user, posts):
             print("Invalid post number\n")
         else:
             poster = ""
-            poster_count = 0
             is_poster = False
             for i in posts[post_num - 1]:
                 for j in i:
                     if poster == user:
                         is_poster = True
                     poster += j
-                    poster_count += 1
             if not is_poster:
                 print("You can't delete that post since you didn't create it.\n")
             else:
